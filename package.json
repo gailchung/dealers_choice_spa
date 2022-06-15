@@ -1,0 +1,32 @@
+{
+  "name": "dealers_choice_spa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon server --ignore dist/ --ignore src/ & npm run build:dev",
+    "build": "webpack",
+    "build:dev": "npm run build -- --watch --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gailchung/dealers_choice_spa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gailchung/dealers_choice_spa/issues"
+  },
+  "homepage": "https://github.com/gailchung/dealers_choice_spa#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "sequelize": "^6.20.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
