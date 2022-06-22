@@ -97,6 +97,15 @@ app.get('/api/occasions', async(req, res, next)=> {
   }
 });
 
+app.post('/api/drinks', async(req, res, next)=> {
+  try {
+    res.status(201).send(await Drink.create(req.body));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
 app.get('/api/drinks', async(req, res, next)=> {
   try {
     res.send(await Drink.findAll());
@@ -118,6 +127,17 @@ app.get('/api/occasions/:occasionId/results', async(req, res, next)=> {
 app.post('/api/occasions/:occasionId/results', async(req, res, next)=> {
   try {
     res.status(201).send(await Result.create({ occasionId: req.params.occasionId, drinkId: req.body.drinkId}));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+app.delete('/api/drinks/:id', async(req, res, next)=> {
+  try {
+    const drink = await Drink.findByPk(req.params.id);
+    await drink.destroy();
+    res.sendStatus(204);
   }
   catch(ex){
     next(ex);

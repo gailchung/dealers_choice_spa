@@ -1,15 +1,25 @@
-// const fetchOccasions =  async() => {
-//     const response = await fetch('/api/occasions');
-//     return response.json();
-// };
+const axios = require('axios');
 
-// const fetchDrinks =  async() => {
-//     const response = await fetch('/api/drinks');
-//     return response.json();
+const fetchOccasions =  async() => {
+    return axios.get('/api/occasions');
+};
 
-// };
+const fetchDrinks =  async() => {
+    return axios.get('/api/drinks');
+};
 
-// module.exports = {
-//     fetchOccasions,
-//     fetchDrinks
-// }
+const deleteDrink = (drink) => {
+    return axios.delete(`/api/drinks/${drink.id}`);
+};
+
+const createDrink = async(drink) => {
+    const response = await axios.post('/api/drinks', drink);
+    return response.data;
+};
+
+export {
+    fetchOccasions,
+    fetchDrinks,
+    createDrink,
+    deleteDrink
+}
